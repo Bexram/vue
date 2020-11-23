@@ -52,7 +52,7 @@ mutations: {
 },
 actions:{
     GET_USERS_FROM_API({commit}){
-        return axios.get ('http://25.50.155.62:8000/getusers/')
+        return axios.get ('http://77.232.55.130:8000/getusers/')
         .then((response) =>{
             commit('SET_PRODUCTS_TO_STATE',response.data);
             console.log(response);
@@ -65,7 +65,7 @@ actions:{
     },
 
     DELETE_USER_FROM_API({commit},userId){
-        return axios.delete ('http://25.50.155.62:8000/signin/'+userId+'/')
+        return axios.delete ('http://77.232.55.130:8000/signin/'+userId+'/')
         .then((response) =>{
             commit('SET_PRODUCTS_TO_STATE');
             console.log(response,'user was deleted');
@@ -80,7 +80,7 @@ actions:{
     ADD_USER_TO_API({commit,dispatch},user){
         return axios({
             method: 'POST',
-            url: 'http://25.50.155.62:8000/signin/',
+            url: 'http://77.232.55.130:8000/signin/',
             data: {
                 username: user.username,
                 password: user.password,
@@ -96,7 +96,7 @@ actions:{
             console.log('---',response);
             axios({
              method: 'POST',
-             url: 'http://25.50.155.62:8000/users/',
+             url: 'http://77.232.55.130:8000/users/',
             data: {
                 auth: response.data.id,
                 first_name: user.first_name,
@@ -126,7 +126,7 @@ actions:{
     CHANGE_USER_IN_API({commit,dispatch},changingParameters){
         return axios ({
             method: 'PUT',
-            url: 'http://25.50.155.62:8000/users/'+changingParameters.id+'/',
+            url: 'http://77.232.55.130:8000/users/'+changingParameters.id+'/',
             data: changingParameters,
             headers: {
                 "content-type": "application/json"
@@ -146,7 +146,7 @@ actions:{
     GET_AUTH_FROM_API({commit},login_data){
             return axios ({
                 method: "POST",
-                url: 'http://25.50.155.62:8000/auth/',
+                url: 'http://77.232.55.130:8000/auth/',
                 data: {
                     username: login_data.username,
                     password: login_data.password
@@ -167,7 +167,7 @@ actions:{
     GET_MENU({commit}){
         return axios ({
             method: "GET",
-            url: 'http://25.50.155.62:8000/menu/',
+            url: 'http://77.232.55.130:8000/menu/',
             data:{},
             headers: {
                 "Authorization": 'Bearer ' + Vue.$cookies.get('access')
@@ -186,7 +186,7 @@ actions:{
     GET_EVENTS({commit}){
         return axios ({
             method: "GET",
-            url: 'http://25.50.155.62:8000/gettasks/',
+            url: 'http://77.232.55.130:8000/gettasks/',
             data:{},
             headers: {
                 "Authorization": 'Bearer ' + Vue.$cookies.get('access')
@@ -211,7 +211,7 @@ actions:{
     GET_REFRESH({commit}){
         return axios ({
             method: "POST",
-            url: 'http://25.50.155.62:8000/auth/refresh/',
+            url: 'http://77.232.55.130:8000/auth/refresh/',
             data: {
                 refresh: Vue.$cookies.get('refresh')
             }
